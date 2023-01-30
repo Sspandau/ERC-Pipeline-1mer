@@ -1351,15 +1351,15 @@ class ErcWorkspace:
                     seq = rec.sequence[start_index:end]
 
                 non_gap_seq = "".join(char for char in seq if char not in GAP_CHARS)
-                if len(non_gap_seq) <= 1:
+                if len(non_gap_seq) <= 0:
                     continue
 
                 segment_len = len(seq)
 
                 chunk_records.append(Record(rec.title, seq))
-            if len(chunk_records) <= 1:
-                print(f"WARNING! Chunk {start_index}-{start_index+self.segment_size} from {alignment} is uninformative and being skipped!")
-                continue
+           # if len(chunk_records) <= 1:
+           #     print(f"WARNING! Chunk {start_index}-{start_index+self.segment_size} from {alignment} is uninformative and being skipped!")
+           #     continue
             write_records(output_prefix + f'.chunk_{start_index}_{min(self.segment_size, segment_len) + start_index}',
                           chunk_records)
 
