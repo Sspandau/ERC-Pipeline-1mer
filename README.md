@@ -1,6 +1,6 @@
-# ERC-Pipeline
+# ERC-Pipeline-single-amino-acid
 
-The pipeline in this repository allows for the generation of evolutionary rate correlations (ERCs). ERCs use a 
+This is a modified pipeline in this repository which allows for the generation of evolutionary rates of each amino acid position of proteins of interest as well as evolutionary rate correlations (ERCs) between aligned single amino acids of two proteins of interests. ERCs use a 
 phylogeny-based approach to look for evolutionary signatures of potential protein-protein interaction. Since ERCs can
 be fairly straightforward to produce, they can be used as an easy method of discovering candidate protein-protein 
 interactions.
@@ -64,7 +64,7 @@ Assuming the sequences are in a directory called `SEQUENCE_DIRECTORY` and the ti
 
 * To specify the number of CPU cores to run with, use the `-n` argument.
 
-* If your sequence data are already prepared, you can use `--skip-align` and `--skip-trim` to skip alignment and 
+* For calculating ERCs of individual amino acids, include the `--skip-align` and `--skip-trim` arguments to skip alignment and 
   trimming of alignments, respectively.
   
 * If your sequences are titled based on non-readable identifiers instead of protein names/symbols (for example: 
@@ -81,9 +81,7 @@ Assuming the sequences are in a directory called `SEQUENCE_DIRECTORY` and the ti
   
 * To automatically archive intermediate FASTA files, pass the `--archive` argument.
 
-* If you want to run ERCs along pieces of the alignments, add the `--segment` argument. This can be modified using the 
-  `--slide` argument, which rather than splitting the alignment into kmers, will normalize the data using a sliding 
-  window based on kmers. You can also use `--kmer K` to change the size of the kmers (replace "K" with the number). 
+* For running ERCs along signle amino acid alignments, add the `--segment` argument. Usse `--kmer 1` to indicate a kmer size of one amino acid. 
   
 * If you want to just prepare all your data and not calculate ERCs, you can pass the `--prepare` flag.
 
@@ -250,7 +248,7 @@ graphviz_network_plot(my_network, "my_network.png")
 ## Citations
 Please cite this specific implementation of ERCs with the following reference:
 ```
-Varela, Austin A., Sammy Cheng, and John H. Werren. "Evolutionary Inference Predicts Novel ACE2 Protein Interactions Relevant to COVID-19 Pathologies." bioRxiv (2021).
+TBD
 ```
 
 Please cite the general ERC method with the following reference:
