@@ -30,10 +30,10 @@ def main():
     output = args[2]
     assert output.endswith(".csv"), f"The output ({output}) must be a .csv file!"
 
-    protein = args[3].split(".")[0].strip()
+    protein = args[3]#.split(".")[0].strip()
 
     if len(args) > 4:
-        protein2 = args[4].split(".")[0].strip()
+        protein2 = args[4]#.split(".")[0].strip()
     else:
         protein2 = None
 
