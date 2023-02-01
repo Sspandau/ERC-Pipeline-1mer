@@ -59,14 +59,15 @@ def main():
                 name2taxa = mammal_taxa_info(name_as_key=True)
                 print(f"Getting rate data for {args[3]} with {args[4]}...")
                 taxa, rates = get_rates(tree, True, taxa_list, protein, protein2)
-                with open(output, 'w') as f:
-                    f.write("protein1,protein2,taxon,taxon order,rate1,rate2,time\n")
+                #with open(output, 'w') as f:
+                f = open(output, 'w')
+                f.write("protein1,protein2,taxon,taxon order,rate1,rate2,time\n")
                 for (taxon, rate1, rate2, time) in zip(taxa, rates[1], rates[2], rates[0]):
                     order = name2taxa[taxon.strip()].order
                     if protein == protein_1_files[0] and protein2 == protein_2_files[0]:
                         f.write(f"{args[3]},{args[4]},{taxon},{order},{rate1},{rate2},{time}\n") #write names of taxons, orders in first few columns
                     else:
-                        f.write(f"{rate1},{rate2}\n") #append rates after adding first aa positions' rates
+                        f.write(f, f"{rate1},{rate2}\n") #append rates after adding first aa positions' rates
         else: #no for loop for second protein if no second protein
             name2taxa = mammal_taxa_info(name_as_key=True)
             print(f"Getting rate data for {args[3]}...")
@@ -79,7 +80,7 @@ def main():
                 if protein == protein_1_files[0]:
                     my_file.write(f"{args[3]},{taxon},{order},{time},{rate1}\n")
                 else:
-                    my_file.write(f"{rate1}\n")
+                    my_file.write(my_file, f"{rate1}\n")
             my_file.close()
 ​
 if __name__ == "__main__":
