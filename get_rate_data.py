@@ -34,9 +34,7 @@ def main():
     protein1_dir = args[3]
     protein_1_files = []
     for filename in os.listdir(protein1_dir):
-        f_name, f_ext = os.path.splitext(filename)
-        f_name = f_name.replace(".fa", "")
-        protein_1_files.append(f_name) #create list of filenames for each aa position
+        protein_1_files.append(filename) #create list of filenames for each aa position
 
     if len(args) > 4:
         protein2_dir = args[4]
@@ -46,9 +44,7 @@ def main():
     if protein2_dir:
         protein_2_files = []
         for filename in os.listdir(protein2_dir):
-            f_name, f_ext = os.path.splitext(filename)
-            f_name = f_name.replace(".fa", "")
-            protein_2_files.append(f_name) #create list of file names for each aa position
+            protein_2_files.append(filename) #create list of file names for each aa position
     else:
         protein_2_files = None
         
