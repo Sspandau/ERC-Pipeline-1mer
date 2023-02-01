@@ -1,4 +1,5 @@
 import os.path as osp
+import os
 import sys
 
 from statsmodels.stats.multitest import multipletests
@@ -30,15 +31,15 @@ def main():
     output = args[2]
     assert output.endswith(".csv"), f"The output ({output}) must be a .csv file!"
 
-    protein1_dir = "\"" + args[3] + "\""
+    protein1_dir = args[3]
     protein_1_files = []
     for filename in os.listdir(protein1_dir):
         f_name, f_ext = os.path.splitext(filename)
-        f_name1, fa = os.path.splitext(f_name)
+        f_name = f_name.replace(".fa", "")
         protein_1_files.append(f_name) #create list of filenames for each aa position
 
     if len(args) > 4:
-        protein2_dir = "\"" + args[4] + "\""
+        protein2_dir = args[4]
     else:
         protein2_dir = None
     
@@ -46,7 +47,7 @@ def main():
         protein_2_files = []
         for filename in os.listdir(protein2_dir):
             f_name, f_ext = os.path.splitext(filename)
-            f_name1, fa = os.path.splitext(f_name)
+            f_name = f_name.replace(".fa", "")
             protein_2_files.append(f_name) #create list of file names for each aa position
     else:
         protein_2_files = None
