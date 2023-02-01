@@ -68,14 +68,14 @@ def main():
         else: #no for loop for second protein if no second protein
             print(f"Getting rate data for {args[3]}...")
             taxa, rates = get_rates(tree, True, taxa_list, protein)
-                 with open(output, 'w') as f:
-                    f.write("protein,taxon,taxon order,time,rate\n")
-                 for (taxon, rate1, time) in zip(taxa, rates[1], rates[0]):
-                    order = name2taxa[taxon.strip()].order
-                    if protein == protein_1_list[0]:
-                        f.write(f"{args[3]},{taxon},{order},{time},{rate1}\n")
-                    else:
-                        f.write(f"{rate1}\n")
+            with open(output, 'w') as f:
+                f.write("protein,taxon,taxon order,time,rate\n")
+            for (taxon, rate1, time) in zip(taxa, rates[1], rates[0]):
+                order = name2taxa[taxon.strip()].order
+                if protein == protein_1_list[0]:
+                    f.write(f"{args[3]},{taxon},{order},{time},{rate1}\n")
+                else:
+                    f.write(f"{rate1}\n")
 
 
 if __name__ == "__main__":
