@@ -47,7 +47,7 @@ def main():
         print(f"Getting rate data for {args[3]} with {args[4]}...")
         taxa, rates = get_rates(tree, True, taxa_list, protein, protein2)
         with open(output, 'w') as f:
-            f.write("protein1,protein2,taxon,taxon order,rate1,rate2,time\n")
+            f.write(f"protein1,protein2,taxon,taxon order,{args[3]},{args[4]},time\n")
             for (taxon, rate1, rate2, time) in zip(taxa, rates[1], rates[2], rates[0]):
                 order = name2taxa[taxon.strip()].order
                 f.write(f"{args[3]},{args[4]},{taxon},{order},{rate1},{rate2},{time}\n")
@@ -55,7 +55,7 @@ def main():
         print(f"Getting rate data for {args[3]}...")
         taxa, rates = get_rates(tree, True, taxa_list, protein)
         with open(output, 'w') as f:
-            f.write("protein,taxon,taxon order,time,rate\n")
+            f.write(f"protein,taxon,taxon order,time,{args[3]}\n")
             for (taxon, rate1, time) in zip(taxa, rates[1], rates[0]):
                 order = name2taxa[taxon.strip()].order
                 f.write(f"{args[3]},{taxon},{order},{time},{rate1}\n")
