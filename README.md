@@ -244,7 +244,7 @@ from utilities import graphviz_network_plot
 # * highlight_by_font: If True, highlighted nodes will have the text highlighted instead of the background
 graphviz_network_plot(my_network, "my_network.png")
 ```
-## Creating rates data frame of each each amino acid
+## Retrieving rates of each amino acid position
 
 Run the get_rate_data.py script on a loop through all the files generated for each amino acid position after running the 1mer ERC pipeline 
 
