@@ -244,6 +244,18 @@ from utilities import graphviz_network_plot
 # * highlight_by_font: If True, highlighted nodes will have the text highlighted instead of the background
 graphviz_network_plot(my_network, "my_network.png")
 ```
+## Creating rates data frame of each each amino acid
+
+Run the get_rate_data.py script on a loop through all the files generated for each amino acid position after running the 1mer ERC pipeline 
+
+```bash
+for file in $(cat files.txt); do python3 get_rate_data.py 30my ./dir ${file}.csv file; done
+```
+Once all the rates for each 1mer have been retried into csv files, run the merge_rate_data.py script as follows
+
+```bash
+python3 merge_rate_data.py /dir/with/rate_csvs/ protein_name
+```
 
 ## Citations
 Please cite this specific implementation of ERCs with the following reference:
